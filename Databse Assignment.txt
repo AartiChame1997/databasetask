@@ -1,0 +1,40 @@
+1.select auth.id,count(bo.id)book from authors auth join books bo on(auth.id=bo.id)
+join booksauthors ba on(auth.id=ba.authorid)
+group by auth.id
+having count(bo.id)>max(bo.id);
+
+
+2. select auth.id,count(*) as author from authors auth
+join booksauthors ba on(auth.id=ba.authorid)
+group by auth.id having count(*)<3
+order by count(*) asc;
+
+3.select top 1 a.country from authors As a
+group by a.country
+order by count(a.country)DESC;
+
+4.select auth.name,sum(bo.pages)as total_page from authors auth 
+join booksauthors ba on(auth.id=ba.authorid)
+join books bo on(bo.id=ba.bookid)
+group by auth.name;
+
+
+5.select A.*,B.price
+from Books B
+inner join Authors A on A.ID=B.ID
+where B.price in(Select max(price)
+		from Books B); 
+
+SSS
+or
+select *
+from Books b
+inner join BooksAuthors c on b.id = c.bookid
+inner join Authors a on a.id = c.authorid
+WHERE B.PRICE IN(SELECT MAX(PRICE)
+		FROM BOOKS );
+
+
+
+
+
