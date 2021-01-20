@@ -25,7 +25,7 @@ inner join Authors A on A.ID=B.ID
 where B.price in(Select max(price)
 		from Books B); 
 
-SSS
+
 or
 select *
 from Books b
@@ -33,6 +33,7 @@ inner join BooksAuthors c on b.id = c.bookid
 inner join Authors a on a.id = c.authorid
 WHERE B.PRICE IN(SELECT MAX(PRICE)
 		FROM BOOKS );
+updated
 
 
 
